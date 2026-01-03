@@ -1,0 +1,60 @@
+---
+import Navbar from '../components/Navbar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yeto - Endüstriyel Çözüm Ortağınız | Talaşlı İmalat, 3D Baskı ve E-Ticaret</title>
+  <meta name="description" content="Yeto - Talaşlı imalat, 3D baskı ve e-ticaret alanlarında profesyonel endüstriyel çözümler sunuyoruz.">
+</head>
+<body class="h-screen overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col">
+  <Navbar />
+
+  <main class="flex-1 flex flex-col justify-center">
+    <!-- Hero Section -->
+    <section class="py-4 md:py-8 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+          Modern Üretim Çözümleri
+        </h2>
+        <p class="text-sm md:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+          Talaşlı imalat, 3D baskı ve e-ticaret alanlarında profesyonel hizmetler sunuyoruz.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="hizmetler" class="py-4 md:py-8 px-4 flex-1 flex items-center">
+      <div class="max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <ServiceCard
+            title="Talaşlı İmalat"
+            description="CNC torna, freze ve hassas işleme ile yüksek kaliteli parça üretimi."
+            icon="⚙️"
+            delay="0"
+          />
+          <ServiceCard
+            title="3D Baskı"
+            description="Prototipleme ve küçük seri üretim için modern 3D baskı teknolojileri."
+            icon="🖨️"
+            delay="1"
+          />
+          <ServiceCard
+            title="E-Ticaret"
+            description="Online satış ve dijital ticaret çözümleri ile işinizi büyütün."
+            icon="🛒"
+            delay="2"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</body>
+</html>

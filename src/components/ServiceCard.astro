@@ -1,0 +1,100 @@
+---
+const { title, description, icon, delay = "0" } = Astro.props;
+---
+
+<div class="card-container" data-delay={delay}>
+  <div class="service-card bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-xl p-6 md:p-8 relative overflow-hidden">
+    <div class="card-glow"></div>
+    <div class="card-content relative z-10">
+      <div class="icon-wrapper text-5xl md:text-6xl mb-3 md:mb-4 text-center">
+        {icon}
+      </div>
+      <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-3 text-center">
+        {title}
+      </h3>
+      <p class="text-sm md:text-base text-gray-600 text-center">
+        {description}
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card-container {
+    perspective: 1000px;
+  }
+
+  .service-card {
+    opacity: 0;
+    transform: rotateX(-15deg) translateY(50px) scale(0.9);
+    animation: cardEntrance 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d;
+  }
+
+  .card-container[data-delay="1"] .service-card {
+    animation-delay: 0.3s;
+  }
+
+  .card-container[data-delay="2"] .service-card {
+    animation-delay: 0.6s;
+  }
+
+  .card-container:hover .service-card {
+    transform: translateY(-15px) scale(1.05) rotateX(5deg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(59, 130, 246, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s;
+    opacity: 0;
+  }
+
+  .card-container:hover .card-glow {
+    opacity: 1;
+    animation: shimmer 2s infinite;
+  }
+
+  .icon-wrapper {
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .card-container:hover .icon-wrapper {
+    transform: scale(1.2) rotateY(360deg);
+  }
+
+  @keyframes cardEntrance {
+    0% {
+      opacity: 0;
+      transform: rotateX(-15deg) translateY(50px) scale(0.9);
+    }
+    60% {
+      transform: rotateX(5deg) translateY(-10px) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: rotateX(0) translateY(0) scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+  }
+</style>
